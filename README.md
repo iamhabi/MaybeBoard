@@ -1,6 +1,6 @@
 # MaybeBoard
 
-Making Daily Board
+Daily Board
 
 ### Clock  
 https://www.w3schools.com/graphics/canvas_clock_start.asp    
