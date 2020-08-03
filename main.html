@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="font/Rimouski.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body style="background-color: black; font-family: Arial;">
+
+        <!--Clock-->
+        <canvas id="clock" width="400" height="400"></canvas>
+
+        <!--Weather-->
+        <div class="weather-container">
+            <div class="weather-icon">
+                <img src="icons/unknown.png" alt="">
+            </div>
+            <div class="temperature-value">
+                <p>- °<span>C</span></p>
+            </div>
+            <div class="temperature-description">
+                <p> - </p>
+            </div>
+            <div class="location">
+                <p>-</p>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="clock.js"></script>
+        <script type="text/javascript" src="weather.js"></script>
+
+    </body>
+</html>
