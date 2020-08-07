@@ -1,9 +1,8 @@
 // SELECT ELEMENTS
-const iconElement = document.querySelector(".weather-icon");
-const tempElement = document.querySelector(".temperature-value p");
-const descElement = document.querySelector(".temperature-description p");
-const locationElement = document.querySelector(".location p");
-const notificationElement = document.querySelector(".notification");
+const iconElement = document.querySelectorAll(".weather-icon");
+const tempElement = document.querySelectorAll(".temperature-value p");
+const descElement = document.querySelectorAll(".temperature-description p");
+const locationElement = document.querySelectorAll(".location p");
 
 // App data
 const weather = {};
@@ -16,13 +15,12 @@ weather.temperature = {
 const KELVIN = 273.15;
 // API KEY
 const key = "2985450e2462b8a26a815a8a48ae0459";
-// Position
-const pos = "Seoul";
 
-getWeather();
+getWeather("Seoul", 0);
+getWeather("Daejeon", 1);
 
 // GET WEATHER FROM API PROVIDER
-function getWeather(){
+function getWeather(pos, idx){
     let api = `http://api.openweathermap.org/data/2.5/weather?q=${pos}&appid=${key}`;
     
     fetch(api)
@@ -38,14 +36,14 @@ function getWeather(){
             weather.country = data.sys.country;
         })
         .then(function(){
-            displayWeather();
+            displayWeather(idx);
         });
 }
 
 // DISPLAY WEATHER TO UI
-function displayWeather(){
-    iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
-    tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
-    descElement.innerHTML = weather.description;
-    locationElement.innerHTML = `${weather.city}, ${weather.country}`;
+function displayWeather(idx){
+    iconElement[idx].innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
+    tempElement[idx].innerHTML = `${weather.temperature.value}°<span>C</span>`;
+    descElement[idx].innerHTML = weather.description;
+    locationElement[idx].innerHTML = `${weather.city}, ${weather.country}`;
 }

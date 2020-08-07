@@ -73,9 +73,9 @@ function drawTime(ctx, radius){
     ctx.textBaseline="middle";
     ctx.textAlign="center";
 
-    ctx.fillText(hour + ":" + minute + ":" + second, 0, 65);
+    ctx.fillText(hour + ":" + minute + ":" + second, 0, radius / 2 + 45);
     ctx.font = "30px Arial";
-    ctx.fillText(monthName[month] + " " + date + " " + dayName[day], 0, 100);
+    ctx.fillText(monthName[month] + " " + date + " " + dayName[day], 0, radius / 2);
 
     //hour
     hour = hour % 12;

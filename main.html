@@ -7,10 +7,27 @@
     <body style="background-color: black; font-family: Arial;">
 
         <!--Clock-->
-        <canvas id="clock" width="400" height="400"></canvas>
+        <canvas id="clock" class="clock" width="700" height="700"></canvas>
 
         <!--Weather-->
-        <div class="weather-container">
+        <!--Seoul-->
+        <div class="weather-container" style="left:50px;">
+            <div class="weather-icon">
+                <img src="icons/unknown.png" alt="">
+            </div>
+            <div class="temperature-value">
+                <p>- °<span>C</span></p>
+            </div>
+            <div class="temperature-description">
+                <p> - </p>
+            </div>
+            <div class="location">
+                <p>-</p>
+            </div>
+        </div>
+
+        <!--Daejeon-->
+        <div class="weather-container" style="left:450px;">
             <div class="weather-icon">
                 <img src="icons/unknown.png" alt="">
             </div>

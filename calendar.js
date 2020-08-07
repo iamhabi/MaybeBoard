@@ -10,20 +10,18 @@ var cnt = prevDate - firstDay + 1;
 
 if (firstDay < 5) y = 4;
 
-document.write(month + 1);
-
 document.write("<table>");
 document.write("<tr>");
 
 // Previous Month
 for (i = 0; i < firstDay; i++) {
-    document.write("<td style='background-color: white;'>" + cnt + "</td>");
+    document.write("<td style='background-color: white;'><p>" + cnt + "</p></td>");
     cnt++;
 }
 
 cnt = 1;
 for (i = firstDay; i < x; i++) {
-    document.write("<td style='background-color: white;'>" + cnt + "</td>");
+    document.write("<td style='background-color: white;'><p>" + cnt + "</p></td>");
     cnt++;
 }
 
@@ -36,9 +34,9 @@ for (i = 0; i < y; i++) {
         if (cnt > lastDate) cnt = 1;
 
         if (cnt == today) {
-            document.write("<td style='background-color: skyblue;'>" + cnt + "</td>");
+            document.write("<td style='background-color: skyblue;'><p>" + cnt + "</p></td>");
         } else {
-            document.write("<td style='background-color: white;'>" + cnt + "</td>");
+            document.write("<td style='background-color: white;'><p>" + cnt + "</p></td>");
         }
         cnt++;
     }
