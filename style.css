@@ -75,3 +75,13 @@
     text-align: center;
     font-size: 0.8em;
 }
+
+table {
+    width: 1000px;
+    height: 600px;
+}
+
+tr, td {
+    border: 1px solid black;
+    text-align: center;
+}
