@@ -14,7 +14,7 @@ weather.temperature = {
 // APP CONSTS AND VARS
 const KELVIN = 273.15;
 // API KEY
-const key = "2985450e2462b8a26a815a8a48ae0459";
+const key = "";
 
 getWeather("Seoul", 0);
 getWeather("Daejeon", 1);
