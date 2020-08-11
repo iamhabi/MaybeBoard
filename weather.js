@@ -14,10 +14,15 @@ weather.temperature = {
 // APP CONSTS AND VARS
 const KELVIN = 273.15;
 // API KEY
-const key = "";
+const key = "2985450e2462b8a26a815a8a48ae0459";
 
-getWeather("Seoul", 0);
-getWeather("Daejeon", 1);
+var oneHour = 1000 * 60 * 60;
+setInterval(weather, oneHour);
+
+function weather() {
+    getWeather("Seoul", 0);
+    getWeather("Daejeon", 1);
+}
 
 // GET WEATHER FROM API PROVIDER
 function getWeather(pos, idx){
