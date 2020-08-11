@@ -4,12 +4,16 @@ var radius = canvas.height / 2;
 ctx.translate(radius, radius);
 radius = radius * 0.90
 
-setInterval(drawClock, 1000);
+// setInterval(drawClock, 1000);
+
+drawClock();
 
 function drawClock() {
-  drawFace(ctx, radius);
-  drawNumbers(ctx, radius);
-  drawTime(ctx, radius);
+    drawFace(ctx, radius);
+    drawNumbers(ctx, radius);
+    drawTime(ctx, radius);
+
+    requestAnimationFrame(drawClock);
 }
 
 function drawFace(ctx, radius) {
@@ -61,21 +65,11 @@ function drawTime(ctx, radius){
     var minute = now.getMinutes();
     var second = now.getSeconds();
 
-    var year = now.getUTCFullYear();
-    var month = now.getMonth();
-    var date = now.getDate();
-    var day = now.getDay();
-
-    const monthName = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    const dayName = ["Sun", "Mon", "Tue", "Wed", "Thi", "Fri", "Sat"];
-
-    ctx.font = "40px Arial";
+    ctx.font = "50px Arial";
     ctx.textBaseline="middle";
     ctx.textAlign="center";
 
-    ctx.fillText(hour + ":" + minute + ":" + second, 0, radius / 2 + 45);
-    ctx.font = "30px Arial";
-    ctx.fillText(monthName[month] + " " + date + " " + dayName[day], 0, radius / 2);
+    ctx.fillText(hour + ":" + minute + ":" + second, 0, radius / 2);
 
     //hour
     hour = hour % 12;
