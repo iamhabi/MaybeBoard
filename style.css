@@ -102,3 +102,10 @@ tr, td {
 p {
     font-size: 40px;
 }
+
+h1 {
+    position: fixed;
+    left: 1000px;
+    top: 40px;
+    color: white;
+}
