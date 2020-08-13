@@ -104,8 +104,9 @@ p {
 }
 
 h1 {
+    font-size: 75px;
     position: fixed;
     left: 1000px;
-    top: 40px;
+    top: -50px;
     color: white;
 }
