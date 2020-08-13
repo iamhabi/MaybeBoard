@@ -14,8 +14,8 @@ var cnt = prevDate - firstDay + 1;
 if (firstDay < 5) y = 4;
 
 drawCalendar();
-var dayinMilliSec = 1000 * 60 * 60 * 24;
-setInterval(drawCalendar, dayinMilliSec);
+
+setInterval(check, 1000);
 
 function drawCalendar() {
     document.write("<h1>" + monthArray[now.getMonth()] + " " + today + " " + dayArray[now.getDay()] + "</h1>");
@@ -54,4 +54,13 @@ function drawCalendar() {
         document.write("</tr>");
     }
     document.write("</table>");
+}
+
+function check() {
+    var now = new Date();
+
+    if (now.getHours() == 0 && now.getMinutes() == 0 && now.getSeconds() == 0) {
+        // refresh
+        location.reload(true);
+    }
 }
