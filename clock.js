@@ -69,7 +69,7 @@ function drawTime(ctx, radius){
     ctx.textBaseline="middle";
     ctx.textAlign="center";
 
-    ctx.fillText(hour + ":" + minute + ":" + second, 0, radius / 2);
+    ctx.fillText(('0' + hour).slice(-2) + ":" + ('0' + minute).slice(-2) + ":" + ('0' + second).slice(-2), 0, radius / 2);
 
     //hour
     hour = hour % 12;
