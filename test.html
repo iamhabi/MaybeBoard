@@ -12,8 +12,11 @@
             }
             let cal = new Array();
 
+            const calendarID = 'chanvinhong@gmail.com';
+            const key = '';
+
             function getEvent() {
-                let URL = 'https://www.googleapis.com/calendar/v3/calendars/chanvinhong@gmail.com/events?key=AIzaSyAEOID_7LigNY-A55laTyFmelJYqaEwFk4'
+                let URL = `https://www.googleapis.com/calendar/v3/calendars/${calendarID}/events?key=${key}`;
 
                 fetch(URL)
                     .then(function(response) {
