@@ -14,39 +14,39 @@ weather.temperature = {
 // APP CONSTS AND VARS
 const KELVIN = 273.15;
 // API KEY
-const key = "2985450e2462b8a26a815a8a48ae0459";
+const key = '2985450e2462b8a26a815a8a48ae0459';
 
 var oneHour = 1000 * 60 * 60;
-setInterval(weather, oneHour);
+setInterval(getAllWeather(), oneHour);
 
-function weather() {
+function getAllWeather() {
     getWeather("Seoul", 0);
     getWeather("Daejeon", 1);
 }
 
 // GET WEATHER FROM API PROVIDER
-function getWeather(pos, idx){
+function getWeather(pos, idx) {
     let api = `http://api.openweathermap.org/data/2.5/weather?q=${pos}&appid=${key}`;
     
     fetch(api)
-        .then(function(response){
+        .then(function(response) {
             let data = response.json();
             return data;
         })
-        .then(function(data){
+        .then(function(data) {
             weather.temperature.value = Math.floor(data.main.temp - KELVIN);
             weather.description = data.weather[0].description;
             weather.iconId = data.weather[0].icon;
             weather.city = data.name;
             weather.country = data.sys.country;
         })
-        .then(function(){
+        .then(function() {
             displayWeather(idx);
         });
 }
 
 // DISPLAY WEATHER TO UI
-function displayWeather(idx){
+function displayWeather(idx) {
     iconElement[idx].innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
     tempElement[idx].innerHTML = `${weather.temperature.value}°<span>C</span>`;
     descElement[idx].innerHTML = weather.description;
