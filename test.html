@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+    <head>
+    </head>
+    <body>
+        <script>
+            getEvent();
+
+            function calinfo() {
+                var summary;
+                var startDate, startDateTime;
+                var endDate, endDateTime;
+            }
+            let cal = new Array();
+
+            function getEvent() {
+                let URL = 'https://www.googleapis.com/calendar/v3/calendars/chanvinhong@gmail.com/events?key=AIzaSyAEOID_7LigNY-A55laTyFmelJYqaEwFk4'
+
+                fetch(URL)
+                    .then(function(response) {
+                        let data = response.json();
+                        return data;
+                    })
+                    .then(function(data) {
+                        var now = new Date();
+                        var month = now.getMonth();
+                        var year = now.getFullYear();
+                        var cnt = 0;
+                        for (var i = 0; i < data.items.length; i++) {
+                            var date = new Date(data.items[i].start.date);
+                            var dateTime = new Date(data.items[i].start.dateTime);
+
+                            if ((dateTime.getMonth() == month && dateTime.getFullYear() == year) || (date.getMonth() == month && date.getFullYear() == year)) { 
+                                cal[cnt] = new calinfo();
+                                cal[cnt].summary = data.items[i].summary;
+                                cal[cnt].startDate = data.items[i].start.date;
+                                cal[cnt].startDateTime = data.items[i].start.dateTime;
+                                cal[cnt].endDate = data.items[i].end.date;
+                                cal[cnt].endDateTime = data.items[i].end.dateTime;
+                                cnt++;
+                            }
+                        }
+                    })
+                    .then(function() {
+                        display();
+                    });
+            }
+
+            function display() {
+                for (i in cal) {
+                    document.write(i + ":: Summary: " + cal[i].summary + " || Start: " + cal[i].startDate + "|" + cal[i].startDateTime + " || End: " + cal[i].endDate + "|" + cal[i].endDateTime);
+                    document.write("<hr>");
+                }
+            }
+        </script>
+    </body>
+</html>
