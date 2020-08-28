@@ -1,7 +1,6 @@
 const dayViewElement = document.querySelector("h1");
 const tableElement = document.querySelectorAll("tr");
 
-// NOT WORK WHY?
 const calendarID = 'chanvinhong@gmail.com';
 const calkey = '';
 
