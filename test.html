@@ -1,59 +1,60 @@
 <!DOCTYPE html>
+<html>
     <head>
+        <link rel="stylesheet" href="style.css">
     </head>
-    <body>
-        <script>
-            getEvent();
+    <body style="background-color: black; font-family: Arial;">
 
-            function calinfo() {
-                var summary;
-                var startDate, startDateTime;
-                var endDate, endDateTime;
-            }
-            let cal = new Array();
+        <!--Clock-->
+        <canvas id="clock" class="clock" width="700" height="700"></canvas>
 
-            const calendarID = 'chanvinhong@gmail.com';
-            const key = '';
+        <!--Weather-->
+        <!--Seoul-->
+        <div class="weather-container" style="left:50px;">
+            <div class="weather-icon">
+                <img src="icons/unknown.png" alt="">
+            </div>
+            <div class="temperature-value">
+                <p>- °<span>C</span></p>
+            </div>
+            <div class="temperature-description">
+                <p> - </p>
+            </div>
+            <div class="location">
+                <p>-</p>
+            </div>
+        </div>
 
-            function getEvent() {
-                let URL = `https://www.googleapis.com/calendar/v3/calendars/${calendarID}/events?key=${key}`;
+        <!--Daejeon-->
+        <div class="weather-container" style="left:450px;">
+            <div class="weather-icon">
+                <img src="icons/unknown.png" alt="">
+            </div>
+            <div class="temperature-value">
+                <p>- °<span>C</span></p>
+            </div>
+            <div class="temperature-description">
+                <p> - </p>
+            </div>
+            <div class="location">
+                <p>-</p>
+            </div>
+        </div>
 
-                fetch(URL)
-                    .then(function(response) {
-                        let data = response.json();
-                        return data;
-                    })
-                    .then(function(data) {
-                        var now = new Date();
-                        var month = now.getMonth();
-                        var year = now.getFullYear();
-                        var cnt = 0;
-                        for (var i = 0; i < data.items.length; i++) {
-                            var date = new Date(data.items[i].start.date);
-                            var dateTime = new Date(data.items[i].start.dateTime);
+        <!--Calendar-->
+        <h1></h1>
+        <table>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+        </table>
 
-                            if ((dateTime.getMonth() == month && dateTime.getFullYear() == year) || (date.getMonth() == month && date.getFullYear() == year)) { 
-                                cal[cnt] = new calinfo();
-                                cal[cnt].summary = data.items[i].summary;
-                                cal[cnt].startDate = data.items[i].start.date;
-                                cal[cnt].startDateTime = data.items[i].start.dateTime;
-                                cal[cnt].endDate = data.items[i].end.date;
-                                cal[cnt].endDateTime = data.items[i].end.dateTime;
-                                cnt++;
-                            }
-                        }
-                    })
-                    .then(function() {
-                        display();
-                    });
-            }
+        <script type="text/javascript" src="js/clock.js"></script>
+        <script type="text/javascript" src="js/weather.js"></script>
+        <script type="text/javascript" src="js/calendar.js"></script>
 
-            function display() {
-                for (i in cal) {
-                    document.write(i + ":: Summary: " + cal[i].summary + " || Start: " + cal[i].startDate + "|" + cal[i].startDateTime + " || End: " + cal[i].endDate + "|" + cal[i].endDateTime);
-                    document.write("<hr>");
-                }
-            }
-        </script>
     </body>
 </html>

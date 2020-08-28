@@ -84,15 +84,27 @@ table {
 
     width: 800px;
     height: 900px;
+
+    border: 5px solid #07f;
+    border-radius: 5px;
 }
 
 tr, td {
-    border: 1px solid black;
+    position: relative;
+    border: 1px solid;
     text-align: center;
+    background-color: white;
+
+    width: 103px;
+    height: 60px;
 }
 
-p {
-    font-size: 40px;
+td p {
+    font-size: 30px;
+    position: absolute;
+    top: -25px;
+    right: 5px;
+    margin-bottom: 5px;
 }
 
 h1 {
@@ -101,4 +113,15 @@ h1 {
     left: 1000px;
     top: -50px;
     color: white;
+}
+
+.summary {
+    font-size: 17px;
+    /* position: relative; */
+    width: 90px;
+    left: 10px;
+    top: 15px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
 }
