@@ -91,7 +91,7 @@ table {
 
 tr, td {
     position: relative;
-    border: 1px solid;
+    /* border: 1px solid; */
     text-align: center;
     background-color: white;
 
@@ -117,11 +117,16 @@ h1 {
 
 .summary {
     font-size: 17px;
-    /* position: relative; */
-    width: 90px;
-    left: 10px;
-    top: 15px;
+    background-color: lightblue;
+    width: 100px;
+    height: 20px;
+    left: 0px;
+    padding-left: 10px;
+    padding: 1px;
+    border-radius: 2px;
+    position: relative;
     text-align: left;
     white-space: nowrap;
     overflow: hidden;
+    /* z-index: 2; */
 }

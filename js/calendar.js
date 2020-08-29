@@ -2,7 +2,7 @@ const dayViewElement = document.querySelector("h1");
 const tableElement = document.querySelectorAll("tr");
 
 const calendarID = 'chanvinhong@gmail.com';
-const calkey = '';
+const calkey = 'AIzaSyAEOID_7LigNY-A55laTyFmelJYqaEwFk4';
 
 var now = new Date();
 var lastDate = new Date(now.getYear(), now.getMonth() + 1, 0).getDate();
@@ -12,7 +12,7 @@ var month = now.getMonth();
 var today = now.getDate();
 
 let monthArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-let dayArray = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+let dayArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 var x = 7, y = 5;
 var cnt = prevDate - firstDay + 1;
@@ -29,7 +29,6 @@ if (firstDay < 5) y = 4;
 
 drawCalendar();
 getEvent();
-// showEvent();
 
 setInterval(check, 1000);
 
@@ -54,15 +53,60 @@ function drawCalendar() {
 
     for (i = 0; i < y; i++) {
         for (j = 0; j < x; j++) {
-            if (cnt > lastDate) cnt = 1, f = 1; // Next Month
+            if (cnt > lastDate) cnt = 1; // Next Month
             
             if (cnt == today) {
                 tableElement[i + 1].innerHTML += "<td class='td" + cnt + "'style='background-color: skyblue;'><p>" + cnt + "</p></td>";
             } else {
                 tableElement[i + 1].innerHTML += "<td class='td" + cnt + "'><p>" + cnt + "</p></td>";
             }
-            
             cnt++;
+        }
+    }
+}
+
+function sortEventbyLength() {
+    var temp;
+    var arr = new Array();
+
+    for (j = 0; j < cal.length; j++) {
+        var year = new Date(cal[j].startDate).getFullYear();
+        if (year != 1970) {
+            arr[j] = new Date(cal[j].endDate).getDate() - new Date(cal[j].startDate).getDate();
+        } else {
+            arr[j] = new Date(cal[j].endDateTime).getDate() - new Date(cal[j].startDateTime).getDate() + 1;
+        }
+    }
+    
+    for (i = 0; i < cal.length - 1; i++) {
+        for (j = 0; j < cal.length - i - 1; j++) {
+            // var year = new Date(cal[j].startDate).getFullYear();
+            if (arr[j] < arr[j + 1]) {
+                // summary = arr[j];
+                // arr[j] = arr[j + 1];
+                // arr[j + 1] = summary;
+                // temp = cal[j].summary;
+                // cal[j].summary = cal[j + 1].summary;
+                // cal[j + 1] = temp;
+
+                // if (year != 1970) {
+                //     startDate = cal[j].startDate;
+                //     cal[j].startDate = cal[j + 1].startDate;
+                //     cal[j + 1].startDate = startDate;
+
+                //     endDate = cal[j].endDate;
+                //     cal[j].endDate = cal[j + 1].endDate;
+                //     cal[j + 1].endDate = endDate;
+                // } else {
+                //     startDateTime = cal[j].startDateTime;
+                //     cal[j].startDateTime = cal[j + 1].startDateTime;
+                //     cal[j + 1].startDateTime = startDateTime;
+
+                //     endDateTime = cal[j].endDateTime;
+                //     cal[j].endDateTime = cal[j + 1].endDateTime;
+                //     cal[j + 1].endDateTime = endDateTime;
+                // }
+            }
         }
     }
 }
@@ -75,15 +119,24 @@ function showEvent() {
         var dateEnd = new Date(cal[i].endDate).getDate();
         var dateTimeEnd = new Date(cal[i].endDateTime).getDate();
 
-        if (dateStart > 0) {
-            for (j = dateStart; j < dateEnd; j++) {
+        var dateYear = new Date(cal[i].startDate).getFullYear();
+        // var dateTimeYear = new Date(cal[i].startDateTime).getFullYear();
+        
+        if (dateYear != 1970) {
+            const element = document.querySelector(".td" + dateStart);
+            element.innerHTML += "<p class='summary'>" + cal[i].summary + "</p>";
+            for (j = dateStart + 1; j < dateEnd; j++) {
                 const element = document.querySelector(".td" + j);
-                element.innerHTML += "<p class='summary'>" + cal[i].summary + "</p>";
+                // element.innerHTML += "<p class='summary'>" + cal[i].summary + "</p>";
+                element.innerHTML += "<p class='summary'>" + " " + "</p>";
             }
         } else {
-            for (j = dateTimeStart; j < dateTimeEnd + 1; j++) {
+            const element = document.querySelector(".td" + dateTimeStart);
+            element.innerHTML += "<p class='summary'>" + cal[i].summary + "</p>";
+            for (j = dateTimeStart+ 1; j < dateTimeEnd + 1; j++) {
                 const element = document.querySelector(".td" + j);
-                element.innerHTML += "<p class='summary'>" + cal[i].summary + "</p>";
+                // element.innerHTML += "<p class='summary'>" + cal[i].summary + "</p>";
+                element.innerHTML += "<p class='summary'>" + " " + "</p>";
             }
         }
     }
@@ -110,15 +163,24 @@ function getEvent() {
                 if ((dateTime.getMonth() == month && dateTime.getFullYear() == year) || (date.getMonth() == month && date.getFullYear() == year)) { 
                     cal[cnt] = new calinfo();
                     cal[cnt].summary = data.items[i].summary;
-                    cal[cnt].startDate = data.items[i].start.date;
-                    cal[cnt].startDateTime = data.items[i].start.dateTime;
-                    cal[cnt].endDate = data.items[i].end.date;
-                    cal[cnt].endDateTime = data.items[i].end.dateTime;
+
+                    if (data.items[i].start.date) {
+                        cal[cnt].startDate = data.items[i].start.date;
+                        cal[cnt].endDate = data.items[i].end.date;
+                        cal[cnt].startDateTime = 0;
+                        cal[cnt].endDateTime = 0;
+                    } else {
+                        cal[cnt].startDateTime = data.items[i].start.dateTime;
+                        cal[cnt].endDateTime = data.items[i].end.dateTime;
+                        cal[cnt].startDate = 0;
+                        cal[cnt].endDate = 0;
+                    }
                     cnt++;
                 }
             }
         })
         .then(function() {
+            // sortEventbyLength();
             showEvent();
         });
 }
