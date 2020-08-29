@@ -2,7 +2,7 @@ const dayViewElement = document.querySelector("h1");
 const tableElement = document.querySelectorAll("tr");
 
 const calendarID = 'chanvinhong@gmail.com';
-const calkey = 'AIzaSyAEOID_7LigNY-A55laTyFmelJYqaEwFk4';
+const calkey = '';
 
 var now = new Date();
 var lastDate = new Date(now.getYear(), now.getMonth() + 1, 0).getDate();
