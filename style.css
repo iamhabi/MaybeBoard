@@ -89,14 +89,13 @@ table {
     border-radius: 5px;
 }
 
-tr, td {
-    position: relative;
-    /* border: 1px solid; */
-    text-align: center;
-    background-color: white;
+/* tr */
 
-    width: 103px;
-    height: 60px;
+td {
+    position: relative;
+    background-color: white;
+    table-layout: fixed;
+    height: 130px;
 }
 
 td p {
@@ -117,14 +116,11 @@ h1 {
 
 .summary {
     font-size: 17px;
-    background-color: lightblue;
-    width: 100px;
+    width: 108px;
     height: 20px;
-    left: 0px;
-    padding-left: 10px;
-    padding: 1px;
+    left: 1px;
     border-radius: 2px;
-    position: relative;
+    /* position: relative; */
     text-align: left;
     white-space: nowrap;
     overflow: hidden;
