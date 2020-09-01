@@ -4,7 +4,7 @@ const trElement = document.querySelectorAll("tr");
 // Google Calendar ID
 const calendarID = 'chanvinhong@gmail.com';
 // Google API key
-const calkey = 'AIzaSyAEOID_7LigNY-A55laTyFmelJYqaEwFk4';
+const calkey = '';
 
 var now = new Date();
 var lastDate = new Date(now.getYear(), now.getMonth() + 1, 0).getDate();   // this month last date
