@@ -4,12 +4,12 @@ Daily Board/Dasy Board
 
 ![maybeboard](/MaybeBoard.png)
 
-### Clock  
+## Clock  
 https://www.w3schools.com/graphics/canvas_clock_start.asp    
 
-### Weather  
+## Weather  
 https://openweathermap.org/  
 https://github.com/CodeExplainedRepo/Weather-App-JavaScript  
 
-### Calendar
+## Calendar
 https://developers.google.com/calendar
