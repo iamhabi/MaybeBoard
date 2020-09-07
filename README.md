@@ -1,6 +1,6 @@
 # MaybeBoard
 
-Daily Board/Dasy Board
+Daily Board/Dash Board
 
 ![maybeboard](/MaybeBoard.png)
 
